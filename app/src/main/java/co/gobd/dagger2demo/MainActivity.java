@@ -1,26 +1,28 @@
 package co.gobd.dagger2demo;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import co.gobd.dagger2demo.component.DaggerVehicleComponent;
-import co.gobd.dagger2demo.component.VehicleComponent;
-import co.gobd.dagger2demo.model.Vehicle;
-import co.gobd.dagger2demo.module.VehicleModule;
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
-    Vehicle vehicle;
+    private static final String TAG = "MainActivity";
+    @Inject
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        VehicleComponent component = DaggerVehicleComponent.builder()
-                .vehicleModule(new VehicleModule()).build();
+        ((App) getApplication()).getComponent().inject(this);
 
-        vehicle = component.provideVehicle();
+        if (preferences != null) {
+            Log.i(TAG, "Shared preferences is not null");
+        }
 
 
     }
