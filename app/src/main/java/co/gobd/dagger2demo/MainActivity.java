@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "Shared preferences is not null");
         }
 
+        ProHelper proHelper = new ProHelperImpl();
+        Toast.makeText(getApplicationContext(), "Is pro? :  " + proHelper.isPro(), Toast.LENGTH_LONG).show();
 
     }
 }

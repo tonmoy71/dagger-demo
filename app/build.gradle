@@ -21,6 +21,17 @@ android {
             applicationIdSuffix ".debug"
         }
     }
+
+    productFlavors {
+        // Free version
+        free {
+            applicationId = "co.gobd.dagger2demo.free"
+        }
+        // Pro version
+        pro {
+            applicationId = "co.gobd.dagger2demo.pro"
+        }
+    }
 }
 
 dependencies {
