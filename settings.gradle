@@ -1,1 +1,2 @@
-include ':app'
+include ':Dagger2Demo'
+project(':Dagger2Demo').projectDir = new File('app')
